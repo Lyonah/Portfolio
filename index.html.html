@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio – Layan Abdullah Alhendi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500&display=swap">
+
+<style>
+:root{
+  --bg:#FFF1EE; --panel:#FFFFFF; --ink:#5B2A3C; --text:#6B4452; --muted:#9A7280; --line:#F6D3CE;
+  --pink:#F49AB4; --lemon:#FFCBA4; --mint:#FFB59B; --violet:#C0486E;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#2A1620;--panel:#3A1F2C;--ink:#FFE9E4;--text:#EBCFD0;--muted:#C79AA6;--line:#5A3341;--pink:#E58AA6;--lemon:#F5B58A;--mint:#D98B73;--violet:#F08FB0;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#2A1620;--panel:#3A1F2C;--ink:#FFE9E4;--text:#EBCFD0;--muted:#C79AA6;--line:#5A3341;--pink:#E58AA6;--lemon:#F5B58A;--mint:#D98B73;--violet:#F08FB0;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.65 var(--body);overflow-x:hidden;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+a{color:var(--violet)}
+a:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px;position:relative}
+#bar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:4px;width:0;background:linear-gradient(90deg,var(--pink),var(--lemon),var(--mint));z-index:20}
+nav{display:flex;gap:6px;flex-wrap:wrap;padding:20px 0}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;padding:6px 14px;border-radius:999px;transition:background .25s,transform .25s}
+nav a:hover{background:var(--lemon);color:#4A1F2F;transform:translateY(-2px) rotate(-2deg)}
+
+/* HERO */
+.hero{position:relative;padding:40px 0 70px;min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.orb{position:absolute;border-radius:50%;filter:blur(8px);opacity:.9;z-index:0;pointer-events:none}
+.o1{width:220px;height:220px;background:var(--pink);right:-30px;top:10px;animation:float 9s ease-in-out infinite}
+.o2{width:130px;height:130px;background:var(--lemon);right:150px;bottom:30px;animation:float 7s ease-in-out -2s infinite}
+.o3{width:90px;height:90px;background:var(--mint);right:20px;bottom:110px;animation:float 8s ease-in-out -4s infinite}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-18px,-30px) scale(1.08)}}
+.hero>*:not(.orb){position:relative;z-index:1}
+.hi{display:inline-block;width:max-content;background:var(--ink);color:var(--bg);padding:7px 16px;border-radius:999px;font-weight:500;font-size:15px;margin-bottom:20px;animation:pop .7s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{transform:scale(.4) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.hero h1{font:800 clamp(52px,13vw,116px)/.95 var(--head);color:var(--ink);margin:0 0 20px;letter-spacing:-.03em}
+.hero h1 span{display:inline-block;animation:drop .8s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes drop{from{transform:translateY(-60px) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
+.role{font:600 clamp(22px,4.5vw,34px)/1.3 var(--head);color:var(--ink);margin:0 0 18px;min-height:1.4em}
+.role b{background:linear-gradient(100deg,var(--violet),#E0785A);-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .35s}
+.role b.out{opacity:0}
+.lead{max-width:32em;font-size:19px;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:14px;font-weight:500;text-decoration:none;background:var(--pink);color:#4A1F2F;box-shadow:0 6px 0 rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(3px);box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.btn.alt{background:var(--lemon);color:#4A1F2F}
+
+/* MARQUEE */
+.marq{margin:10px -9999px 0;padding:14px 9999px;background:var(--ink);overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg)}
+.track{display:inline-flex;gap:38px;animation:slide 24s linear infinite;color:var(--bg);font:600 22px var(--head)}
+.track i{font-style:normal;color:var(--lemon)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:64px 0 8px}
+h2{font:800 clamp(32px,6vw,46px)/1.1 var(--head);color:var(--ink);margin:0 0 26px;display:inline-block;background:linear-gradient(transparent 62%,var(--lemon) 62%);padding:0 6px}
+h3{font:700 22px/1.3 var(--head);color:var(--ink);margin:0 0 6px}
+.about{display:grid;gap:24px}
+.facts{background:var(--panel);border:2px solid var(--ink);border-radius:20px;padding:20px 24px;box-shadow:8px 8px 0 var(--mint)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.facts div:last-child{border:0}
+.facts span:first-child{color:var(--muted)}
+.grid{display:grid;gap:22px}
+.card{background:var(--panel);border:2px solid var(--ink);border-radius:20px;padding:26px;box-shadow:8px 8px 0 var(--pink);transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s}
+.card:nth-child(2){box-shadow:8px 8px 0 var(--violet)}
+.card:hover{transform:translate(-4px,-6px) rotate(-.6deg);box-shadow:14px 14px 0 var(--lemon)}
+.meta{color:var(--muted);font-size:15px;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.chips li{background:var(--bg);color:var(--ink);border:1.5px solid var(--ink);padding:4px 13px;border-radius:999px;font-size:14.5px;transition:background .2s,transform .2s}
+.chips li:hover{background:var(--mint);transform:scale(1.1) rotate(-3deg)}
+.skills{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{padding:0 0 20px 24px;border-left:3px solid var(--ink);position:relative}
+.timeline li::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--pink);border:3px solid var(--bg);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(244,154,180,.35)}}
+.timeline b{color:var(--ink)}
+.contact{background:#5B2A3C;color:#FFE9E4;border-radius:28px;padding:36px 28px;margin-top:20px;text-align:left}
+.contact h2{background:none;color:#FFCBA4;padding:0;margin-bottom:10px}
+.contact a{color:#FFCBA4;font-weight:500}
+.contact p{color:#FFE9E4}
+footer{padding:30px 0 50px;color:var(--muted);font-size:15px}
+
+/* REVEAL (only when JS is on) */
+.js .rv{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .7s ease,transform .7s cubic-bezier(.2,1.2,.4,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (min-width:720px){.about{grid-template-columns:1.5fr 1fr}.grid{grid-template-columns:1fr 1fr}.grid .card:first-child{grid-column:span 2}}
+@media (max-width:600px){.o1{width:150px;height:150px}.o2{display:none}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}html{scroll-behavior:auto}
+}
+/* Keep navigation visible while scrolling */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  justify-content: center;
+  padding: 12px 16px;
+  padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Leave space for the navigation */
+body {
+  padding-top: calc(88px + env(safe-area-inset-top, 0px));
+}
+
+/* Keep section titles visible after clicking links */
+html {
+  scroll-padding-top: calc(88px + env(safe-area-inset-top, 0px));
+}
+
+@media (max-width: 600px) {
+  nav a {
+    font-size: 15px;
+    padding: 6px 10px;
+  }
+
+  body {
+    padding-top: calc(128px + env(safe-area-inset-top, 0px));
+  }
+
+  html {
+    scroll-padding-top: calc(128px + env(safe-area-inset-top, 0px));
+  }
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="wrap">
+  <nav aria-label="Sections">
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+    <span class="hi">👋 Hi, I’m</span>
+    <h1 id="name" aria-label="Layan">Layan</h1>
+    <p class="role">I’m a <b id="word">student</b></p>
+    <p class="lead">An Information Technology student exploring programming, artificial intelligence, and game development.</p>
+    <div class="btns">
+      <a class="btn" href="#projects">See my projects</a>
+      <a class="btn alt" href="#contact">Let’s connect</a>
+    </div>
+  </header>
+</div>
+
+<div class="marq" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<div class="wrap">
+  <section id="about" class="rv">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I’m Layan, an Information Technology student at Princess Nourah bint Abdulrahman University. I’m developing my programming skills through projects and exploring how technology can bring creative ideas to life.</p>
+        <p>Outside of my studies, I enjoy gaming and discovering how games and applications are built.</p>
+      </div>
+      <div class="facts">
+        <div><span>University</span><span>Princess Nourah University</span></div>
+        <div><span>Major</span><span>Information Technology</span></div>
+        <div><span>Expected graduation</span><span>2029</span></div>
+        <div><span>Languages</span><span>Arabic, English</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="rv">Projects</h2>
+    <div class="grid">
+      <article class="card rv">
+        <article class="card rv">
+
+  <h3>Mawrooth | مَوروث</h3>
+  <p class="meta">Team project · Arabthon · 2026</p>
+
+  <p>An AI-powered project that brings Nabati poetry to life through explanations and visual storytelling.</p>
+
+  <p>My contribution: helping develop the project idea, build the project, and present it.</p>
+
+  <ul class="chips">
+    <p><strong>Award:</strong> Recognized at Arabthon for the project’s creative, innovative, and practical idea.</p>
+    <li>Python</li>
+    <li>ALLaM-7B</li>
+    <li>QLoRA</li>
+    <li>Gradio</li>
+    <li>Hugging Face</li>
+    <li>FLUX.1-schnell</li>
+    </ul>
+  </article>
+      <article class="card rv">
+  <h3>Online Food Ordering System</h3>
+  <p class="meta">University team project · In progress · 2026</p>
+
+  <p>A Java-based food ordering system being developed to let customers browse food and drinks, view calorie information, and place orders.</p>
+  <p>My contribution: creating the UML class diagram and contributing to the code and user interface development.</p>      
+  <ul class="chips">
+  <li>Java</li>
+  <li>JavaFX</li>
+  <li>UML</li>
+</ul>
+</article>
+      <article class="card rv">
+  <h3>Personal Portfolio</h3>
+  <p class="meta">Personal project · 2026</p>
+
+  <p>A personal website showcasing my projects, skills, and learning journey.</p>
+
+  <p>My contribution: customizing an HTML template, updating the content, and adapting the design while learning web development.</p>
+
+  <ul class="chips">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+</article>
+  <article class="card rv">
+  <h3>Salon Booking Prototype</h3>
+  <p class="meta">Personal project · Prototype · 2026</p>
+
+  <p>An Arabic interface prototype for browsing salon services, booking appointments, and managing reservations.</p>
+
+  <ul class="chips">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+
+  <p>
+    <a
+      class="btn"
+      href="https://lyonah.github.io/salon-booking/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View project ↗
+    </a>
+  </p>
+</article>
+    </div>
+  </section>
+
+  <section id="skills" class="rv">
+  <h2>Skills</h2>
+
+  <div class="skills">
+
+    <div>
+      <h3>Technical</h3>
+      <ul class="chips">
+        <li>Java</li>
+        <li>C++ Basics</li>
+        <li>Object Oriented Programming</li>
+        <li>UML</li>
+        <li>HTML Basics</li>
+        <li>CSS Basics</li>
+        <li>Python Basics</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Tools</h3>
+      <ul class="chips">
+        <li>NetBeans</li>
+        <li>VS Code</li>
+        <li>GitHub</li>
+        <li>Hugging Face</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Personal</h3>
+      <ul class="chips">
+        <li>Teamwork</li>
+        <li>Problem Solving</li>
+        <li>Presentation</li>
+        <li>Communication</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+ <section id="education" class="rv">
+  <h2>Education and activities</h2>
+
+  <ul class="timeline">
+    <li>
+      <b>Princess Nourah bint Abdulrahman University</b><br>
+      Bachelor’s degree in Information Technology<br>
+      Expected graduation: 2029
+    </li>
+
+    <li>
+      <b>Arabthon — Saudi Identity Track</b><br>
+      Contributed to developing and presenting Mawrooth,
+      an AI-powered project exploring Nabati poetry.<br>
+      2026
+    </li>
+  </ul>
+</section>
+
+  <section id="contact" class="rv">
+    <div class="contact">
+      <h2>Let’s talk</h2>
+      <p>Interested in collaborating on projects
+      and exploring learning opportunities.</p>
+      <p><a href="mailto:Layonah53@gmail.com">[Layonah53@gmail.com]</a><br>
+      <a href="https://www.linkedin.com/in/layan-alhendi/?isSelfProfile=true">[LinkedIn]</a> · <a href="https://github.com/lyonah">[GitHub]</a></p>
+    </div>
+  </section>
+  <footer>© 2026 Lyoni</footer>
+</div>
+
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  // letters drop in one by one
+  var n=document.getElementById('name'), t=n.textContent; n.textContent='';
+  t.split('').forEach(function(c,i){var s=document.createElement('span');s.textContent=c===' '?'\u00A0':c;s.style.animationDelay=(0.25+i*0.05)+'s';s.setAttribute('aria-hidden','true');n.appendChild(s);});
+  // rotating words
+  var words=['student','tech enthusiast','problem solver','team player'],w=document.getElementById('word'),k=0;
+  setInterval(function(){w.classList.add('out');setTimeout(function(){k=(k+1)%words.length;w.textContent=words[k];w.classList.remove('out');},350);},2400);
+  // marquee
+  var items=['SOFTWARE DEVELOPMENT','ARTIFICIAL INTELLIGENCE','GAME DEVELOPMENT'],h='';
+  for(var r=0;r<2;r++){items.concat(items).forEach(function(x){h+='<span>'+x+'</span><i>✦</i>';});}
+  var tr=document.getElementById('track');tr.innerHTML=h;
+  function speed(){tr.style.animationDuration=Math.round(tr.scrollWidth/2/60)+'s';}
+  speed();addEventListener('load',speed);
+  // scroll reveal
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    els.forEach(function(e,i){e.style.transitionDelay=(i%3)*0.08+'s';io.observe(e);});
+  } else {els.forEach(function(e){e.classList.add('in');});}
+  // progress bar
+  var bar=document.getElementById('bar');
+  addEventListener('scroll',function(){var h=d.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%';},{passive:true});
+})();
+</script>
+</body>
+</html>
